@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Ampere 💜</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f3e5f5, #d1c4e9);
+      overflow: hidden;
+      color: #4a148c;
+      text-align: center;
+      opacity: 0;
+      filter: blur(20px);
+      transition: opacity 2s ease, filter 3s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-top: 60px;
+    }
+
+    /* หัวใจลอย */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      animation: floatFade 6s forwards ease-in;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    /* วาดหัวใจด้วย CSS */
+    .heart .shape {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+    }
+    .heart .shape::before,
+    .heart .shape::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: inherit;
+    }
+    .heart .shape::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart .shape::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatFade {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .photo {
+      margin: 30px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #ce93d8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: transform 0.5s ease, opacity 0.8s ease;
+    }
+
+    .photo img:hover {
+      transform: scale(1.05);
+    }
+
+    .click-hint {
+      font-size: 1.1rem;
+      color: #7b1fa2;
+      opacity: 0.8;
+      margin-top: 10px;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .page {
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+
+    .page.hidden {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      width: 80%;
+      max-width: 600px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+      opacity: 0.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    #playButton {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ce93d8;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    #playButton:hover {
+      background-color: #ab47bc;
+    }
+  </style>
+</head>
+<body>
+  <!-- หน้าแรก -->
+  <div class="page" id="page1">
+    <h1>💜 Happy Birthday Ampere 💜</h1>
+    <div class="photo">
+      <img src="your_photo.jpg" alt="Ampere" id="nextBtn">
+      <div class="click-hint">กดที่รูปเพื่อไปหน้าถัดไป </div>
+    </div>
+  </div>
+
+  <!-- หน้าที่สอง -->
+  <div class="page hidden" id="page2">
+    <div class="message">
+      <p>
+        สุขสันต์วันเกิดนะคะเด็กน้อยของเค้า17ขวบเเย้ว
+        ขอให้เทอมีความสุขมากๆๆๆเลยนะคะคิดอะไรก็ให้ได้อย่างนั้นสุขภาพเเข็งเเรงนะคะที่รักอยู่ด้วยกันกับเค้าไปนานๆนะคะเค้าอยากอยู่แฮปเทอทุกปีเลย 
+        ขอบคุณนะคะที่คอยอยู่ข้างๆเค้าเสมอมา เค้ารักเทอที่สุดเลยนะคะรักมากขึ้นทุกๆวันเยย
+      </p>
+    </div>
+    <div class="photo">
+      <img src="your_photo2.jpg" alt="Ampere2">
+    </div>
+    <footer>รักแอมแปร์ที่สุดด 💜</footer>
+  </div>
+
+
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    const heartColors = ['#f48fb1', '#ce93d8', '#ba68c8', '#e1bee7', '#f06292', '#ff8a80'];
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+
+      const shape = document.createElement('div');
+      shape.classList.add('shape');
+      shape.style.backgroundColor = heartColors[Math.floor(Math.random() * heartColors.length)];
+
+      heart.appendChild(shape);
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 250);
+
+ 
+
+    const nextBtn = document.getElementById('nextBtn');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    nextBtn.addEventListener('click', () => {
+      page1.classList.add('hidden');
+      setTimeout(() => {
+        page2.classList.remove('hidden');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
